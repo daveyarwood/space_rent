@@ -1,0 +1,7 @@
+<h1>People</h1>
+
+<ul>
+  <% @people.each do |person| %>
+  <li><%= link_to person.name, person %> owes <%= number_to_currency(person.owes, unit: "$") %></li>
+  <% end %>
+</ul>

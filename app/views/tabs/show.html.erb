@@ -1,0 +1,7 @@
+<h1><%= @tab.name %></h1>
+
+<p>
+  We owe <%= number_to_currency(@tab.amount, unit: "$") %> in <%= @tab.name %>.
+</p>
+
+<p><%= link_to "Overview of what we owe", tabs_path %></p>

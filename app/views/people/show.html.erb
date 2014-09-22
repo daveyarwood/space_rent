@@ -1,0 +1,7 @@
+<h1><%= @person.name %></h1>
+
+<p>
+  <%= @person.name %> owes <%= number_to_currency(@person.owes, unit: "$") %>.
+</p>
+
+<p><%= link_to "Back to people index", people_path %></p>

@@ -1,0 +1,10 @@
+<h1>Messages</h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li><b><%= message.person.name %>:</b>
+        <%= message.text %>
+        <i>(<%= message.created_at.localtime %>)</i>
+    </li>
+  <% end %>
+</ul>
