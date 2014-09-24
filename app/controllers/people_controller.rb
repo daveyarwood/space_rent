@@ -1,9 +1,37 @@
 class PeopleController < ApplicationController
+  before_action :fetch_person, only: [:show, :edit, :update, :destroy]
+  
   def index
     @people = Person.all
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @people }
+    end
   end
 
   def show
-    @person = Person.find(params[:id])
+
   end
+  
+  def new
+    
+  end
+  
+  def edit
+    
+  end
+  
+  def update
+    
+  end
+  
+  def destroy
+    
+  end
+  
+  private
+  def fetch_person
+    @person = Person.find(params[:id])
+  end    
 end
