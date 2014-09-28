@@ -35,4 +35,3 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
   end    
 end
-end
