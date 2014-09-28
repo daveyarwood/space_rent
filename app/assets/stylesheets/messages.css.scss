@@ -1,3 +1,24 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#messages {
+  list-style: none;
+
+  .message {
+  }
+  
+  .log_message {
+    @extend .message;
+    color: red;
+  }
+  
+  .name {
+    font-weight: bold;
+  }
+  
+  .timestamp {
+    font-size: 75%;
+    font-style: italic;
+  }
+}

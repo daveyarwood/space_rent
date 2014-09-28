@@ -1,0 +1,14 @@
+<h1>Unpaid bills:</h1>
+
+<table cellpadding=5>
+  <tr>
+    <td><b>Date</b></td>
+    <td><b>Amount Due</b></td>
+  </tr>
+  <% @bills.each do |bill| %>
+    <tr>
+      <td><%= bill.created_at.to_formatted_s(:mmddyyyy) %></td>
+      <td><%= number_to_currency(bill.owed, unit: "$") %></td>
+    </tr>
+  <% end %>
+</table>

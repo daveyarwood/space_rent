@@ -1,0 +1,7 @@
+<h1><%= @bill.name %></h1>
+
+<p>
+  We owe <%= number_to_currency(@bill.owed, unit: "$") %>.
+</p>
+
+<p><%= link_to "Back to unpaid bills", bills_path %></p>

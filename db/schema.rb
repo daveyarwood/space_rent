@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922031142) do
+ActiveRecord::Schema.define(version: 20140928163519) do
+
+  create_table "bills", force: true do |t|
+    t.decimal  "owed"
+    t.boolean  "late",       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.string   "person_id"
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_log_message", default: false
   end
 
   create_table "people", force: true do |t|

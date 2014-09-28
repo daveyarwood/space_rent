@@ -1,0 +1,14 @@
+<% if message.is_log_message %>
+  <li class="log_message">
+    <span class="name"><%= message.person.name %></span>
+    <%= message.text %>
+    <span class="timestamp">(<%= time_ago_in_words(message.created_at) %> ago)</span>
+  </li>
+<% else %>
+  <li class="message">
+    <span class="name"><%= message.person.name %>:</span>
+    <%= message.text %>
+    <span class="timestamp">(<%= time_ago_in_words(message.created_at) %> ago)</span>
+  </li>
+<% end %>
+

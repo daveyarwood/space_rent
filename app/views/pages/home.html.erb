@@ -1,8 +1,16 @@
+<h1 id="amount_owed">
+  We owe <%= number_to_currency(Bill.sum(:owed), unit: "$") %>.
+</h1>
+
 <ul id="amounts_owed">
   <% Person.all.each do |person| %>
-    <li><%= link_to person.name, person %> 
-        owes <%= number_to_currency(person.owes) %>.</li>
+    <li>
+      <%= link_to person.name, person %> 
+      owes <%= number_to_currency(person.owes) %>.
+    </li>
   <% end %>
 </ul>
-  
-<%= render "messages/messages" %>
+
+<ul id="messages">
+  <%= render @messages %>
+</ul>
