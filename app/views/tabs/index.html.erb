@@ -1,7 +1,0 @@
-<h1>To Pay:</h1>
-
-<ul>
-  <% @tabs.each do |tab| %>
-  <li>We owe <%= number_to_currency(tab.amount, unit: "$") %> in <%= link_to tab.name, tab %>.</li>
-  <% end %>
-</ul>
