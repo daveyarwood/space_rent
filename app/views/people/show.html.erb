@@ -4,4 +4,7 @@
   <%= @person.name %> owes <%= number_to_currency(@person.owes, unit: "$") %>.
 </p>
 
-<p><%= link_to "Back to people index", people_path %></p>
+<p>
+  <%= link_to "Back to people index", people_path %> |
+  <%= link_to "Home", root_path %>
+</p>
