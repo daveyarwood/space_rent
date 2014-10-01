@@ -15,7 +15,19 @@ class PeopleController < ApplicationController
   end
   
   def new
-    
+    @person = Person.new
+  end
+  
+  def create
+    @person = Person.new(params[:person])
+    if @person.save
+      flash[:notice] = "Successfully created a new person."
+      flash[:color]  = "valid"
+    else
+      flash[:notice] = "Something doesn't look right..."
+      flash[:color]  = "invalid"
+    end
+    render "new"
   end
   
   def edit
