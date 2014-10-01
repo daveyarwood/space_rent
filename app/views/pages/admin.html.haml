@@ -15,7 +15,8 @@
       Password: %br/ 
       = f.password_field :password
     %p 
-      Confirm Password: %br/ <%= f.password_field :password_confirmation %>
+      Confirm Password: %br/
+      = f.password_field :password_confirmation
     = f.submit "Create"
 
   - if @person.errors.any?
