@@ -8,8 +8,7 @@
   .message {
   }
   
-  .log_message {
-    @extend .message;
+  .log {
     color: red;
   }
   

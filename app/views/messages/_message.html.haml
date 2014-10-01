@@ -1,0 +1,4 @@
+%li.message{class: "log" if message.is_log_message}
+  %span.name= "#{message.person.name}#{":" unless message.is_log_message}"
+  = message.text
+  %span.timestamp= "(#{time_ago_in_words(message.created_at)} ago)"
