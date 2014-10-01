@@ -1,0 +1,24 @@
+-# apps/views/pages/admin.html.haml
+
+- @page_title = "spacerent v#{SpaceRent::Application::VERSION} | admin panel"
+
+.new_person
+  %h1 New Person:
+  = form_for(:person, :url => {:controller => 'people', :action => 'create'}) do |f|
+    %p 
+      Name: %br/ 
+      = f.text_field :name
+    %p 
+      Email: %br/ 
+      = f.text_field :email
+    %p
+      Password: %br/ 
+      = f.password_field :password
+    %p 
+      Confirm Password: %br/ <%= f.password_field :password_confirmation %>
+    = f.submit "Create"
+
+  - if @person.errors.any?
+    %ul.new_person_errors
+    - for message_error in @person.errors.full_messages
+      %li= message_error

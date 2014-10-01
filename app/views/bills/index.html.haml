@@ -1,0 +1,14 @@
+-# app/views/bills/index.html.haml
+
+%h1 Unpaid bills:
+
+%table{cellpadding: 5}
+  %thead
+    %tr
+      %th Date
+      %th Amount Due
+  %tbody
+    - @bills.each do |bill|
+      %tr
+        %td= bill.created_at.to_formatted_s(:mmddyyyy)
+        %td= number_to_currency(bill.owed, unit: "$")

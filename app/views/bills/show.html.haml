@@ -1,0 +1,12 @@
+-# app/views/bills/show.html.haml
+
+%h1= "Bill ##{@bill.id}"
+
+%p= "Invoice date: #{@bill.created_at.to_formatted_s(:mmddyyyy)}"
+
+%p= "We owe #{number_to_currency(@bill.owed, unit: "$")}."
+
+- if @bill.late
+  %p{style: "color:red"} Payment is overdue.
+
+%p= link_to "Back to unpaid bills", bills_path

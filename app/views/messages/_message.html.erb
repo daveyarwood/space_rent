@@ -1,9 +1,0 @@
-<li class="<%= message.is_log_message ? "log_message" : "message" %>">
-  <span class="name">
-    <%= message.person.name %><% unless message.is_log_message %>:<% end %>
-  </span>
-  <%= message.text %>
-  <span class="timestamp">
-    (<%= time_ago_in_words(message.created_at) %> ago)
-  </span>
-</li>
