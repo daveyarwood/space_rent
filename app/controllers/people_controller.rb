@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :fetch_person, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @people = Person.all
     
@@ -22,10 +22,10 @@ class PeopleController < ApplicationController
     @person = Person.new(params[:person])
     if @person.save
       flash[:notice] = "Successfully created a new person."
-      flash[:color]  = "valid"
+      flash[:color]  = "success"
     else
       flash[:notice] = "Something doesn't look right..."
-      flash[:color]  = "invalid"
+      flash[:color]  = "failure"
     end
     render "new"
   end
