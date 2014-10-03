@@ -1,3 +1,5 @@
+- title "home"
+
 %h1#amount_owed= "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
 
 %ul#amounts_owed= render @people
