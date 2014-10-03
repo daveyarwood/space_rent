@@ -1,32 +1,41 @@
 - title "new person"
 
 %p{style: "font-weight: bold"}
-  Rent is split equally between all people in the database. %br/
+  Rent is split equally between all people in the database.
+  %br/
   Only create a new person if he/she will be contributing to the rent.
 
+%p
+  - if flash[:notice]
+    .notice= flash[:notice]
+  - if flash[:error]
+    .error= flash[:error]
+    
+- if @person.errors.any?
+  %ul.new_person_errors
+  - for message_error in @person.errors.full_messages
+    %li= message_error
+  
 .new_person
   %h1 New Person:
   = form_for @person do |f|
-    %p
-      Name: 
-      = f.text_field :name
-    %p
-      Email: 
-      = f.text_field :email
-    %p
-      Password: 
-      = f.password_field :password
-    %p
-      Confirm Password: 
-      = f.password_field :password_confirmation
+    Name: 
+    = f.text_field :name
+    %br/
+    Email: 
+    = f.text_field :email
+    %br/
+    Password: 
+    = f.password_field :password
+    %br/
+    Confirm Password: 
+    = f.password_field :password_confirmation
+    %br/
     = f.submit "Create"
-
-  - if @person.errors.any?
-    %ul.new_person_errors
-    - for message_error in @person.errors.full_messages
-      %li= message_error
+      
+  - flash[:error] = flash[:notice] = nil
 
 %p
-  - link_to "Admin Panel", "pages#admin"
+  = link_to "Admin Panel", admin_path
   |
-  - link_to "Home", root_path
+  = link_to "Home", root_path

@@ -19,13 +19,11 @@ class PeopleController < ApplicationController
   end
   
   def create
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
     if @person.save
       flash[:notice] = "Successfully created a new person."
-      flash[:color]  = "success"
     else
-      flash[:notice] = "Something doesn't look right..."
-      flash[:color]  = "failure"
+      flash[:error] = "Something doesn't look right..."
     end
     render "new"
   end
@@ -45,5 +43,9 @@ class PeopleController < ApplicationController
   private
   def fetch_person
     @person = Person.find(params[:id])
-  end    
+  end
+  
+  def person_params
+    params.require(:person).permit(:name, :email, :password)
+  end
 end
