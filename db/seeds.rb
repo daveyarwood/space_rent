@@ -17,5 +17,7 @@ Person.create(name: "Daniel", password: "daniel", email: "test@example.com")
 Person.create(name: "Elliott", password: "elliott", email: "test@example.com")
 Person.create(name: "Osamu", password: "osamu", email: "test@example.com")
 
+Bill.create(owed: 285)
+
 Message.create(person: dave, text: "test message")
 Message.create(person: dave, is_log_message: true, text: "left a log message.")
