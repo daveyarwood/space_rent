@@ -38,11 +38,4 @@ ActiveRecord::Schema.define(version: 20141001014843) do
     t.boolean  "is_log_message", default: false
   end
 
-  create_table "tabs", force: true do |t|
-    t.decimal  "amount",     precision: 10, scale: 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
 end
