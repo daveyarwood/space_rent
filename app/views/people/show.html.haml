@@ -4,7 +4,4 @@
 
 %p= "#{@person.name} owes #{number_to_currency(@person.owes, unit: "$")}."
 
-%p
-  = link_to "People", people_path
-  |
-  = link_to "Home", root_path
+%p= link_to "People", people_path

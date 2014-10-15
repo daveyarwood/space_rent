@@ -12,5 +12,3 @@
       %tr
         %td= bill.created_at.to_formatted_s(:mmddyyyy)
         %td= number_to_currency(bill.owed, unit: "$")
-        
-%p= link_to "Home", root_path

@@ -9,7 +9,4 @@
 - if @bill.late
   %p{style: "color:red"} Payment is overdue.
 
-%p
-  = link_to "Unpaid bills", bills_path
-  |
-  = link_to "Home", root_path
+%p= link_to "Unpaid bills", bills_path

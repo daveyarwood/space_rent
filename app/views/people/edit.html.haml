@@ -3,10 +3,3 @@
 %h1= "Editing #{@person.name}:"
   
 = render partial: "form", locals: {person: @person, button_text: "Save changes"}
-
-%p
-  = link_to "#{@person.name}'s Profile", @person
-  |
-  = link_to "Admin Panel", admin_path
-  |
-  = link_to "Home", root_path
