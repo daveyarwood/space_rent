@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get "/admin", to: "pages#admin"
   get "/login",  to: "sessions#new"
-  get "/logout", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

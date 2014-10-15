@@ -1,0 +1,14 @@
+%header.navbar
+  = link_to "spacerent", root_path, id: "logo"
+  %nav
+    - if signed_in?
+      %span{style: "font-weight: bold"}= link_to current_user.name, current_user
+      |
+      = link_to "settings", "#"
+      - if current_user.is_admin
+        |
+        = link_to "admin panel", admin_path
+      |
+      = link_to "logout", logout_path, method: :delete
+    - else
+      = link_to "login", login_path

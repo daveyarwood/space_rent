@@ -6,18 +6,18 @@ class SessionsController < ApplicationController
   def create
     n, pw = params[:session][:name], params[:session][:password]
     current_user = Person.ci_search!(n).authenticate!(pw)
-    
-    # do stuff with current_user, redirect_to root_path, etc.
-
+    sign_in current_user
+    redirect_to root_path
   rescue ActiveRecord::RecordNotFound
     flash[:error] = "Sorry, I don't know that person."
-    render "pages/home"
+    redirect_to root_path
   rescue ActiveRecord::AuthenticationError
     flash[:error] = "That's not the right password."
-    render "pages/home"
+    redirect_to root_path
   end
 
   def destroy
-
+    sign_out
+    redirect_to root_path
   end
 end
