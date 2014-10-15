@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001014843) do
-  
-  create_table "people", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.decimal  "owes",       default: 0
-    t.boolean  "is_admin",   default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141015040722) do
 
   create_table "bills", force: true do |t|
     t.decimal  "owed"
@@ -36,6 +26,24 @@ ActiveRecord::Schema.define(version: 20141001014843) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_log_message", default: false
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.decimal  "owes",            default: 0.0
+    t.boolean  "is_admin",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "email_me",        default: true
+  end
+
+  create_table "tabs", force: true do |t|
+    t.decimal  "amount",     precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
 end

@@ -5,35 +5,9 @@
   %br/
   Only create a new person if he/she will be contributing to the rent.
 
-%p
-  - if flash[:notice]
-    .notice= flash[:notice]
-  - if flash[:error]
-    .error= flash[:error]
-    
-- if @person.errors.any?
-  %ul.new_person_errors
-  - for message_error in @person.errors.full_messages
-    %li= message_error
+%h1 New Person:
   
-#new_person
-  %h1 New Person:
-  = form_for @person do |f|
-    = f.label      :name, "Name:"
-    = f.text_field :name
-    %br/
-    = f.label      :email, "Email:"
-    = f.text_field :email
-    %br/
-    = f.label          :password, "Password:"
-    = f.password_field :password
-    %br/
-    = f.label          :password_confirmation, "Confirm Password:"
-    = f.password_field :password_confirmation
-    %br/
-    = f.submit "Create"
-      
-  - flash[:error] = flash[:notice] = nil
+= render partial: "form", locals: {person: @person, button_text: "Create"}
 
 %p
   = link_to "Admin Panel", admin_path
