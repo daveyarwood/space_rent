@@ -7,10 +7,12 @@ $red: #CD0000;
 
 .notice {
   color: $green;
+  font-weight: bold;
 }
 
 .error {
   color: $red;
+  font-weight: bold;
 }
 
 .field_with_errors {
