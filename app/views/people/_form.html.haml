@@ -19,9 +19,13 @@
     %br/
     = f.label          :email_me, "Email notifications?"
     = f.check_box      :email_me
-    %br/
-    = f.label          :is_admin, "Admin?"
-    = f.check_box      :is_admin
+    - if current_user.admin?
+      %br/
+      = f.label          :owes, "Currently owes:"
+      = f.number_field   :owes
+      %br/
+      = f.label          :admin, "Admin?"
+      = f.check_box      :admin
     %br/
     = f.label          :password, "Password:"
     = f.password_field :password
