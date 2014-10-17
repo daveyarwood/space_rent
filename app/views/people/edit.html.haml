@@ -1,5 +1,5 @@
-- title "editing #{@person.name}"
+- title "settings"
 
-%h1= "Editing #{@person.name}:"
+%h1= "Settings for #{@person.name}:"
   
 = render partial: "form", locals: {person: @person, button_text: "Save changes"}

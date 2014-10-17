@@ -11,7 +11,7 @@ Bill.delete_all
 Message.delete_all
 
 dave = Person.create(name: "Dave", password: "dave", 
-                     email: "dave.yarwood@gmail.com", is_admin: true)
+                     email: "dave.yarwood@gmail.com", admin: true)
 
 Person.create(name: "Daniel", password: "daniel", email: "test@example.com")
 Person.create(name: "Elliott", password: "elliott", email: "test@example.com")
