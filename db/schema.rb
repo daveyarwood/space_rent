@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015044309) do
+ActiveRecord::Schema.define(version: 20141017000235) do
 
   create_table "bills", force: true do |t|
     t.decimal  "owed"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141015044309) do
     t.string   "email"
     t.string   "password_digest"
     t.decimal  "owes",            default: 0.0
-    t.boolean  "is_admin",        default: false
+    t.boolean  "admin",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_me",        default: true

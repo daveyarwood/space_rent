@@ -13,8 +13,9 @@ class PagesController < ApplicationController
   private
 
   def authorize
-    unless current_user.admin?
-      redirect_to root_path, error: "You have to be logged in as an admin to do that."
+    unless signed_in? && current_user.admin?
+      redirect_to root_path, 
+        flash: {error: "You have to be logged in as an admin to do that."}
     end
   end
 end
