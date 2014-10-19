@@ -1,5 +1,5 @@
 %li
-  = link_to person.name, person
+  %span{style: "font-weight: bold"}= person.name
   = "owes #{number_to_currency(person.owes, unit: "$")}."
   - if signed_in? && (current_user == person || current_user.admin?)
     %small
