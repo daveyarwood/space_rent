@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.order(created_at: :desc).limit(20).reverse
+    @messages = Message.all
     
     respond_to do |format|
       format.html
