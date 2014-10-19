@@ -1,3 +1,8 @@
 %li
   = link_to person.name, person
   = "owes #{number_to_currency(person.owes, unit: "$")}."
+  - if signed_in? && (current_user == person || current_user.admin?)
+    %small
+      [
+      = link_to "edit", edit_person_path(person)
+      ]

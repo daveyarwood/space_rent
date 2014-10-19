@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :fetch_person, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_person, only: [:show, :destroy]
   before_action :authorize, only: [:edit, :update]
 
   def index
