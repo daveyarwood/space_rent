@@ -1,6 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :fetch_person, only: [:show, :destroy]
-  before_action :authorize, only: [:edit, :update]
+  before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
     @people = Person.all
@@ -12,7 +11,7 @@ class PeopleController < ApplicationController
   end
 
   def show
-
+    @person = Person.find(params[:id])
   end
   
   def new
@@ -20,7 +19,7 @@ class PeopleController < ApplicationController
   end
   
   def create
-    @person = Person.new(person_params)
+    @person = Person.new(current_user.admin? ? person_params_admin : person_params)
     if @person.save
       flash[:notice] = "Successfully created a new person."
     else
@@ -43,14 +42,11 @@ class PeopleController < ApplicationController
   end
   
   def destroy
-    
+    Person.find(params[:id]).destroy
+    redirect_to root_path, notice: "No more #{@person.name}."
   end
   
   private
-
-  def fetch_person
-    @person = Person.find(params[:id])
-  end
   
   def person_params
     params.require(:person).permit(:name, :email, :password, :password_confirmation,
