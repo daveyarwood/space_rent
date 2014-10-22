@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20141017000235) do
 
   create_table "bills", force: true do |t|
-    t.decimal  "owed"
+    t.decimal  "owed",     precision: 10, scale: 2
     t.boolean  "late",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,12 +41,4 @@ ActiveRecord::Schema.define(version: 20141017000235) do
   end
 
   add_index "people", ["remember_token"], name: "index_people_on_remember_token"
-
-  create_table "tabs", force: true do |t|
-    t.decimal  "amount",     precision: 10, scale: 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
 end
