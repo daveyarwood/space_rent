@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017000235) do
+ActiveRecord::Schema.define(version: 20141022033634) do
 
   create_table "bills", force: true do |t|
-    t.decimal  "owed",     precision: 10, scale: 2
-    t.boolean  "late",       default: false
+    t.decimal  "owed",       precision: 10, scale: 2
+    t.boolean  "late",                                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141017000235) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_log_message", default: false
+    t.boolean  "log_message", default: false
   end
 
   create_table "people", force: true do |t|
@@ -41,4 +41,12 @@ ActiveRecord::Schema.define(version: 20141017000235) do
   end
 
   add_index "people", ["remember_token"], name: "index_people_on_remember_token"
+
+  create_table "tabs", force: true do |t|
+    t.decimal  "amount",     precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
 end
