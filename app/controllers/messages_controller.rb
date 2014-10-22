@@ -7,4 +7,10 @@ class MessagesController < ApplicationController
       format.json { render json: @messages }
     end
   end
+  
+  private
+
+  def message_params
+    params.require(:message).permit(:text)
+  end
 end
