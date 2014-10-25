@@ -7,8 +7,14 @@
     %tr
       %th Date
       %th Amount Due
+      %th
   %tbody
     - @bills.each do |bill|
       %tr
         %td= bill.created_at.to_formatted_s(:mmddyyyy)
         %td= number_to_currency(bill.owed, unit: "$")
+        %td
+          - if signed_in? && current_user.admin?
+            [
+            = link_to "edit", edit_bill_path(bill)
+            ]

@@ -6,7 +6,13 @@
   - if flash[:error]
     .error= flash[:error]
 
-%h1#amount_owed= "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
+%h1#amount_owed
+  = "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
+  - if signed_in? && current_user.admin?
+    %small
+      [
+      = link_to "edit", bills_path
+      ]
 
 %ul#amounts_owed= render @people
 

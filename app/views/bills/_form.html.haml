@@ -1,0 +1,22 @@
+%p
+  - if flash[:notice]
+    .notice= flash[:notice]
+  - if flash[:error]
+    .error= flash[:error]
+
+- if bill.errors.any?
+  %ul.bill_errors
+  - for error_message in bill.errors.full_messages
+    %li= error_message
+
+#bill_form
+  = form_for bill do |f|
+    = f.label          :owed, "Amount due:"
+    = f.number_field   :owed
+    %br/
+    = f.label          :late, "Late?"
+    = f.check_box       :late
+    %br/
+    = f.submit "Save changes"
+
+- flash[:error] = flash[:notice] = nil
