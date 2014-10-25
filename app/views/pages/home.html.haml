@@ -11,3 +11,5 @@
 %ul#amounts_owed= render @people
 
 %ul#messages= render @messages
+
+= render "messages/form" if signed_in?

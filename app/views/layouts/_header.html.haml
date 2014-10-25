@@ -2,7 +2,7 @@
   = link_to "spacerent", root_path, id: "logo"
   %nav
     - if signed_in?
-      %span{style: "font-weight: bold"}= link_to current_user.name, current_user
+      %span{style: "font-weight: bold"}= current_user.name
       |
       = link_to "settings", edit_person_path(current_user)
       - if current_user.admin?
