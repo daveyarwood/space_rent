@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022033634) do
+ActiveRecord::Schema.define(version: 20141024232703) do
 
   create_table "bills", force: true do |t|
     t.decimal  "owed",       precision: 10, scale: 2
@@ -41,12 +41,5 @@ ActiveRecord::Schema.define(version: 20141022033634) do
   end
 
   add_index "people", ["remember_token"], name: "index_people_on_remember_token"
-
-  create_table "tabs", force: true do |t|
-    t.decimal  "amount",     precision: 10, scale: 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
 
 end
