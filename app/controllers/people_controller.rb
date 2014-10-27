@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-  before_action :authorize, only: [:edit, :update, :destroy]
+  before_action :fetch_person, only: [:edit, :show, :update, :destroy]
+  before_action :authorize, only: [:new, :edit, :update, :destroy]
 
   def index
     @people = Person.all
@@ -8,10 +9,6 @@ class PeopleController < ApplicationController
       format.html
       format.json { render json: @people }
     end
-  end
-
-  def show
-    @person = Person.find(params[:id])
   end
   
   def new
@@ -28,10 +25,6 @@ class PeopleController < ApplicationController
     render "new"
   end
   
-  def edit
-    
-  end
-  
   def update
     if @person.update(current_user.admin? ? person_params_admin : person_params)
       flash[:notice] = "Settings updated."
@@ -42,7 +35,7 @@ class PeopleController < ApplicationController
   end
   
   def destroy
-    Person.find(params[:id]).destroy
+    @person.destroy
     redirect_to root_path, notice: "No more #{@person.name}."
   end
   
@@ -57,9 +50,12 @@ class PeopleController < ApplicationController
     params.require(:person).permit(:name, :email, :password, :password_confirmation,
                                    :owes, :admin, :email_me)
   end
+  
+  def fetch_person
+    @person = Person.find(params[:id])
+  end
 
   def authorize
-    @person = Person.find(params[:id])
     case
     when !signed_in?
       redirect_to root_path, 
