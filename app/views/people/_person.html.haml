@@ -6,3 +6,10 @@
       [
       = link_to "edit", edit_person_path(person)
       ]
+  - if person.payments.any?
+    - amount = number_to_currency(person.payments.sum(:amount), unit: "$")
+    %span.status.pending_payment= "pending payment: #{amount}"
+  - elsif person.owes <= 0
+    %span.status.paid= "paid"
+  - else
+    = render "payments/form" if signed_in? && current_user == person

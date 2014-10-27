@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   has_many :messages
+  has_many :payments, dependent: :destroy
   has_secure_password
 
   validates_presence_of :name, :email

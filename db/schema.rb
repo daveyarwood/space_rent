@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024232703) do
+ActiveRecord::Schema.define(version: 20141026181010) do
 
   create_table "bills", force: true do |t|
     t.decimal  "owed",       precision: 10, scale: 2
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20141024232703) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "log_message", default: false
+  end
+
+  create_table "payments", force: true do |t|
+    t.decimal  "amount",     precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "person_id"
   end
 
   create_table "people", force: true do |t|

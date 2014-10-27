@@ -1,0 +1,8 @@
+%li
+  %span{style: "font-weight: bold"}= payment.person.name
+  = "- #{number_to_currency(payment.amount, unit: "$")}"
+  = "(owes #{number_to_currency(payment.person.owes, unit: "$")})"
+  = "-"
+  = link_to "accept", accept_payment_path(payment), method: :delete
+  = "/"
+  = link_to "reject", reject_payment_path(payment), method: :delete

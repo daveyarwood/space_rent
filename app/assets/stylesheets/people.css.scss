@@ -17,3 +17,20 @@ $red: #CD0000;
 
 .field_with_errors {
 }
+
+.new_person_warning {
+  color: $red;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 85%;
+  font-style: italic;
+}
+
+.pending_payment {
+}
+
+.paid {
+  color: $green;
+}

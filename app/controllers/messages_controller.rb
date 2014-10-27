@@ -18,8 +18,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params[:message][:person] = current_user if signed_in?
-    params.require(:message).permit(:person, :text)
+    params.require(:message).permit(:text)
   end
 
   def authorize
