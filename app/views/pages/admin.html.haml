@@ -5,7 +5,14 @@
 %h1.new_person= link_to "New Person", new_person_path
 
 .pending_payments
-  %h1 Pending Payments
-  %ul= render @payments
+  %h1 Pending Payments:
+  - if @payments.any?
+    %ul= render @payments
+  - else
+    %p (none)
+
+.manual_payment
+  %h1 Manual Payment:
+  = render "payments/admin_form"
   
 - flash[:error] = flash[:notice] = nil

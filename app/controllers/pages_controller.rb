@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   def admin
     @people = Person.all
     @payments = Payment.all
+    @payment = Payment.new
   end
 
   private
