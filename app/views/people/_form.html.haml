@@ -11,7 +11,7 @@
     %br/
     = f.label          :email_me, "Email notifications?"
     = f.check_box      :email_me
-    - if current_user.admin?
+    - if signed_in? && current_user.admin?
       %br/
       = f.label          :owes, "Currently owes:"
       = f.number_field   :owes
