@@ -1,10 +1,6 @@
 - title "home"
 
-%p
-  - if flash[:notice]
-    .notice= flash[:notice]
-  - if flash[:error]
-    .error= flash[:error]
+= render "shared/flash_messages"
 
 %h1#amount_owed
   = "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
@@ -19,3 +15,5 @@
 %ul#messages= render @messages
 
 = render "messages/form" if signed_in?
+
+- flash[:error] = flash[:notice] = nil

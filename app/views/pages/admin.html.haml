@@ -1,7 +1,11 @@
 - title "admin panel"
 
+= render "shared/flash_messages"
+
 %h1.new_person= link_to "New Person", new_person_path
 
 .pending_payments
   %h1 Pending Payments
   %ul= render @payments
+  
+- flash[:error] = flash[:notice] = nil

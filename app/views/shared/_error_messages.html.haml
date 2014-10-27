@@ -1,0 +1,4 @@
+- if object.errors.any?
+  %ul.error_messages
+  - for error_message in object.errors.full_messages
+    %li= error_message

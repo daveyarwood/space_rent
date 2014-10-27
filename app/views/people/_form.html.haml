@@ -1,16 +1,8 @@
-%p
-  - if flash[:notice]
-    .notice= flash[:notice]
-  - if flash[:error]
-    .error= flash[:error]
-    
-- if person.errors.any?
-  %ul.person_errors
-  - for error_message in person.errors.full_messages
-    %li= error_message
+= render "shared/flash_messages"
   
 #person_form
   = form_for person do |f|
+    = render "shared/error_messages", object: f.object
     = f.label          :name, "Name:"
     = f.text_field     :name
     %br/

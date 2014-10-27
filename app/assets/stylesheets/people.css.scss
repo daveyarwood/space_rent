@@ -18,6 +18,11 @@ $red: #CD0000;
 .field_with_errors {
 }
 
+ul#amounts_owed {
+  list-style-type: none;
+  padding: 0;
+}
+
 .new_person_warning {
   color: $red;
   font-weight: bold;

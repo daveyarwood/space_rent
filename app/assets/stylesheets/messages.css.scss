@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #messages {
-  list-style: none;
+  list-style-type: none;
+  padding: 0;
 
   .message {
   }
@@ -20,4 +21,12 @@
     font-size: 75%;
     font-style: italic;
   }
+}
+
+#message_box {
+  display: inline;
+}
+
+#message_send_button {
+  display: inline;
 }
