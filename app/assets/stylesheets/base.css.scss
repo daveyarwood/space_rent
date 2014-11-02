@@ -1,0 +1,66 @@
+html, body, form {
+  margin: 0;
+  padding: 0;
+}
+
+$gray: #ddd;
+$dark-gray: #777;
+$black: #000;
+$white: #fff;
+
+$mono: "Courier New", monospace;
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  outline: none;
+  padding: 5px; 
+  border: none;
+  border-bottom: 2px solid $gray;
+  transition: border 0.3s;
+
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid $black;
+  }
+}
+
+select {
+  outline: none;
+  background: transparent;
+  padding: 5px;
+  font-size: 1em;
+  font-family: $mono;
+}
+
+input[type="submit"] {
+  padding: 5px;
+  border: 1px solid $black;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+  font-family: $mono;
+
+  &:hover, &:focus {
+    outline: none;
+    background: $black;
+    color: $white;
+  }
+}
+
+a:link, a:visited { 
+  color: $black;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: $black;
+  text-decoration: underline;
+}
+  
+  
+
+// to do: move this to a more content-specific place
+body {
+  font-family: $mono;
+  color: $dark-gray;
+}
