@@ -1,5 +1,5 @@
 - title "edit bill"
 
-%h1= "Editing bill dated ##{@bill.created_at.to_formatted_s(:mmddyyyy)}:"
+%h1= "Editing bill dated #{@bill.created_at.to_formatted_s(:mmddyyyy)}:"
 
 = render partial: "form", locals: {bill: @bill}

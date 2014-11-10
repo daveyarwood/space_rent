@@ -10,11 +10,18 @@ $white: #fff;
 
 $mono: "Courier New", monospace;
 
+body {
+  background: $white;
+  font-family: $mono;
+  color: $dark-gray;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="number"] {
   outline: none;
-  padding: 5px; 
+  padding: 5px;
+  margin-bottom: 10px;
   border: none;
   border-bottom: 2px solid $gray;
   transition: border 0.3s;
@@ -24,6 +31,8 @@ input[type="number"] {
     border-bottom: 2px solid $black;
   }
 }
+
+input[type="checkbox"] { margin-bottom: 10px; }
 
 select {
   outline: none;
@@ -47,7 +56,7 @@ input[type="submit"] {
   }
 }
 
-a:link, a:visited { 
+a:link, a:visited {
   color: $black;
   text-decoration: none;
 }
@@ -55,12 +64,4 @@ a:link, a:visited {
 a:hover, a:active {
   color: $black;
   text-decoration: underline;
-}
-  
-  
-
-// to do: move this to a more content-specific place
-body {
-  font-family: $mono;
-  color: $dark-gray;
 }

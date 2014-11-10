@@ -5,15 +5,13 @@
 %h1#amount_owed
   = "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
   - if signed_in? && current_user.admin?
-    %small
-      [
-      = link_to "edit", bills_path
-      ]
+    %span.edit-link== [#{link_to "edit", bills_path}]
 
 %ul#amounts_owed= render @people
 
 %ul#messages= render @messages
 
-= render "messages/form" if signed_in?
+- if signed_in?
+  .message_form= render "messages/form"
 
 - flash[:error] = flash[:notice] = nil

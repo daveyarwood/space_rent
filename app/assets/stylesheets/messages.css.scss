@@ -8,25 +8,22 @@
 
   .message {
   }
-  
+
   .log {
     color: red;
   }
-  
+
   .name {
     font-weight: bold;
   }
-  
+
   .timestamp {
     font-size: 75%;
     font-style: italic;
   }
 }
 
-#message_box {
-  display: inline;
-}
-
-#message_send_button {
-  display: inline;
+.message_form {
+  input { display: inline; }
+  #message_text { width: 400px }
 }

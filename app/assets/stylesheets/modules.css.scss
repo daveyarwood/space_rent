@@ -1,0 +1,29 @@
+$green: #006400;
+$red: #CD0000;
+
+.notice {
+  color: $green;
+  font-weight: bold;
+}
+
+.error, .warning {
+  color: $red;
+  font-weight: bold;
+}
+
+.field_with_errors {
+}
+
+.status {
+  font-size: 85%;
+  font-style: italic;
+}
+
+.paid {
+  color: $green;
+  font-weight: bold;
+}
+
+.edit-link {
+  font-size: 85%;
+}

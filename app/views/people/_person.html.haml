@@ -2,10 +2,7 @@
   %span{style: "font-weight: bold"}= person.name
   = "owes #{number_to_currency(person.owes, unit: "$")}."
   - if signed_in? && current_user.admin?
-    %small
-      [
-      = link_to "edit", edit_person_path(person)
-      ]
+    %span.edit-link== [#{link_to "edit", edit_person_path(person)}]
   - if person.payments.any?
     - amount = number_to_currency(person.payments.sum(:amount), unit: "$")
     %span.status.pending_payment= "pending payment: #{amount}"

@@ -15,6 +15,4 @@
         %td= number_to_currency(bill.owed, unit: "$")
         %td
           - if signed_in? && current_user.admin?
-            [
-            = link_to "edit", edit_bill_path(bill)
-            ]
+            %span.edit-link== [#{link_to "edit", edit_bill_path(bill)}]

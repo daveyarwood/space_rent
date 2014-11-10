@@ -1,10 +1,10 @@
 - title "new person"
 
-%p.new_person_warning
+%p.warning
   Rent is split equally between all people in the database.
   %br/
   Only create a new person if he/she will be contributing to the rent.
 
 %h1 New Person:
-  
+
 = render partial: "form", locals: {person: @person, button_text: "Create"}

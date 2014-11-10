@@ -1,0 +1,16 @@
+header, main { width: 90%; margin: auto }
+
+header {
+  #logo { float: left; font-weight: bold; }
+  #login { float: right; text-align: right; }
+  nav { float: right;
+    ul {
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+      li { display: inline; }
+      li + li:before { content: "|"; padding: 0 0.5em; }
+    }
+    #username { font-weight: bold; }
+  }
+}

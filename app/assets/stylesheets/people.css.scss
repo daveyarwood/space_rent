@@ -2,40 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$green: #006400;
-$red: #CD0000;
-
-.notice {
-  color: $green;
-  font-weight: bold;
-}
-
-.error {
-  color: $red;
-  font-weight: bold;
-}
-
-.field_with_errors {
-}
-
-ul#amounts_owed {
+#amounts_owed {
   list-style-type: none;
   padding: 0;
 }
 
-.new_person_warning {
-  color: $red;
-  font-weight: bold;
-}
-
-.status {
-  font-size: 85%;
-  font-style: italic;
-}
+#person_email { width: 200px; }
 
 .pending_payment {
 }
 
-.paid {
-  color: $green;
-}
