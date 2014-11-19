@@ -1,6 +1,8 @@
 header, main { width: 90%; margin: auto }
 
 header {
+  margin-top: 10px;
+  height: 40px;
   #logo { float: left; font-weight: bold; }
   #login { float: right; text-align: right; }
   nav { float: right;

@@ -1,9 +1,5 @@
 #login
   = form_for(:session, url: sessions_path) do |f|
-    = f.label :name, "Name:"
-    = f.text_field :name
-    %br/
-    = f.label :password, "Password:"
-    = f.password_field :password
-    %br/
+    = f.text_field :name, placeholder: "name", autofocus: true
+    = f.password_field :password, placeholder: "password"
     = f.submit "login"
