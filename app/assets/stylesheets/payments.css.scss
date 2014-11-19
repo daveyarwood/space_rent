@@ -8,14 +8,9 @@
   }
 }
 
-.payment_person_dropdown {
-  display: inline;
+.manual_payment {
+  #payment_person_id, #payment_amount, input[type="submit"] {
+    display: inline;
+  }
 }
 
-.payment_amount {
-  display: inline;
-}
-
-.payment_submit {
-  display: inline;
-}

@@ -1,7 +1,6 @@
 = form_for @payment do |f|
-  .payment_person_dropdown
-    = f.collection_select :person_id, Person.all, :id, :name
-    has paid $
-  .payment_amount= f.number_field :amount
+  = f.collection_select :person_id, Person.all, :id, :name
+  has paid $
+  = f.number_field :amount
   = "."
-  .payment_submit= f.submit "Submit"
+  = f.submit "Submit"
