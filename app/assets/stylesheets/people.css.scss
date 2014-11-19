@@ -5,9 +5,20 @@
 #amounts_owed {
   list-style-type: none;
   padding: 0;
+  li { margin-bottom: 10px; }
 }
 
 #person_email { width: 200px; }
+
+.person_owes_amount, 
+#edit-link, 
+.status, 
+#new_payment, 
+.field, 
+.actions, 
+input[type="submit"] { 
+  display: inline; 
+}
 
 .pending_payment {
 }
