@@ -9,6 +9,7 @@
 Person.delete_all
 Bill.delete_all
 Message.delete_all
+Payment.delete_all
 
 dave = Person.create(name: "Dave", password: "dave",
                      email: "dave.yarwood@gmail.com", admin: true)
@@ -19,5 +20,5 @@ Person.create(name: "Osamu", password: "osamu", email: "test@example.com")
 
 Bill.create(owed: 285)
 
-Message.create(person: dave, text: "test message")
-Message.create(person: dave, log_message: true, text: "left a log message.")
+Message.create(person: dave, name: "Dave", text: "test message")
+Message.create(person: dave, name: "Dave", log_message: true, text: "left a log message.")
