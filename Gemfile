@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use Postgres as the database
 gem 'pg'
+# Enable all platform features in production
+gem 'rails_12factor'
 # Use HAML as the templating engine
 gem "haml-rails"
 # Use SCSS for stylesheets
