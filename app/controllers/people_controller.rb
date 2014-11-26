@@ -18,11 +18,13 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(current_user.admin? ? person_params_admin : person_params)
     if @person.save
+      UserMailer.welcome(@person).deliver
       flash[:notice] = "Successfully created a new person."
+      redirect_to new_person_path
     else
       flash[:error] = "Something doesn't look right..."
+      render "new"
     end
-    render "new"
   end
   
   def update

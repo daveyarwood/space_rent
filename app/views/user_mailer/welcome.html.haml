@@ -1,0 +1,27 @@
+%p= "Hey #{@person.name}!"
+
+%p I wrote a little web application to help us coordinate paying practice space rent -- this email was sent automatically when you were added as a user. 
+
+%p
+  %b== You can access the site by clicking #{link_to "here", root_url}.
+
+%p For now, your login info is:
+
+%p
+  %b Name: 
+  = @person.name
+  %br/
+  %b Password: 
+  = @person.name.downcase
+
+%p (After logging in, you should probably click "settings" and change your password to something harder to guess.)
+
+%p Here's how it works:
+
+%p When rent is due toward the end of each month, the amounts we owe will update automatically. Once you pay your share of the rent (in real life), click "OK, I've paid" and you're good to go!
+
+%p I've also built in a chat system so we can leave messages for each other. Just type your message and click "Send." 
+
+%p That's about it -- let me know if you have any questions!
+
+%p Dave
