@@ -21,6 +21,8 @@ class PaymentsController < ApplicationController
     @person.update(owes: @person.owes - @payment.amount)
     @payment.destroy
     redirect_to admin_path, notice: "Payment accepted."
+    amount_for_message = ActionController::Base.helpers.number_to_currency @payment.amount, unit: "$"
+    @person.messages.create(name: @person.name, log_message: true, text: "paid #{amount_for_message}.")
   end
   
   def reject
