@@ -25,6 +25,11 @@ class Bill < ActiveRecord::Base
     Bill.create(owed: ENV["RENT_AMOUNT"].to_i)
   end
 
+  def bill.late_fee
+    bill = Bill.last
+    bill.update(owed: bill.owed + ENV["LATE_FEE"], late: true)
+  end
+
   def Bill.late_notice
     if Bill.sum(:owed) > 0
       Person.find_each(conditions: "owes > 0") do |person| 
