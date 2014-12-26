@@ -1,0 +1,10 @@
+%p
+  %b== This is an automated reminder from spacerent -- rent for #{@month} is due.
+
+%p== You currently owe a total of #{number_to_currency @person.owes, unit: "$"}.
+
+%p== At your earliest convenience, please pay your rent, then #{link_to "log into spacerent", root_url} and click the "OK, I've paid" button. You can see how much you owe at any time by going to #{link_to root_url, root_url}.
+
+%p (This is an automatic email sent by the web app -- no need to reply)
+
+%p Dave

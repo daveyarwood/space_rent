@@ -15,4 +15,22 @@ class Bill < ActiveRecord::Base
       end
     end
   end
+
+  def Bill.split_rent(amount)
+    share = amount.to_f / Person.count
+    Person.find_each {|person| person.update(owes: person.owes + share)}
+  end
+
+  def Bill.monthly_bill
+    Bill.create(owed: ENV["RENT_AMOUNT"].to_i)
+  end
+
+  def Bill.late_notice
+    if Bill.sum(:owed) > 0
+      Person.find_each(conditions: "owes > 0") do |person| 
+        UserMailer.rent_is_late(person).deliver
+      end
+    end
+  end
+
 end

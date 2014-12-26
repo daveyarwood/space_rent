@@ -1,13 +1,19 @@
 class UserMailer < ActionMailer::Base
   default from: "dave.yarwood@gmail.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.account_activation.subject
-  #
   def welcome(person)
     @person = person
-    mail to: person.email, subject: "Welcome to spacerent"
+    mail to: @person.email, subject: "Welcome to spacerent"
+  end
+
+  def rent_is_due(person)
+    @person = person
+    @month = Date.today.at_beginning_of_month.next_month.strftime("%B")
+    mail to: @person.email, subject: "Rent is due for #{@month}"
+  end
+
+  def rent_is_late(person)
+    @person = person
+    mail to: @person.email, subject: "Rent is late"
   end
 end

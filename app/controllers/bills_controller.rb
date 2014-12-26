@@ -18,8 +18,14 @@ class BillsController < ApplicationController
     @bill = Bill.new
   end
 
-  def edit
-
+  def create
+    @bill = Bill.new(bill_params)
+    if @bill.save
+      Bill.split_rent(@bill.owed)
+      Person.find_each {|person| UserMailer.rent_is_due(person).deliver }
+    else
+      DevMailer.bill_creation_error(@bill).deliver
+    end
   end
 
   def update
