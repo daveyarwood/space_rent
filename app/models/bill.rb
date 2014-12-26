@@ -25,7 +25,7 @@ class Bill < ActiveRecord::Base
     Bill.create(owed: ENV["RENT_AMOUNT"].to_i)
   end
 
-  def bill.late_fee
+  def Bill.late_fee
     bill = Bill.last
     bill.update(owed: bill.owed + ENV["LATE_FEE"], late: true)
   end
