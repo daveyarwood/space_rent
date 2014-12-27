@@ -1,8 +1,8 @@
-header, main { width: 90%; margin: auto }
-
 header {
   margin-top: 10px;
+  width: 90%;
   height: 40px;
+  margin: auto;
   #logo { float: left; font-weight: bold; }
   #login { float: right; text-align: right; }
   nav { float: right;
@@ -14,5 +14,20 @@ header {
       li + li:before { content: "|"; padding: 0 0.5em; }
     }
     #username { font-weight: bold; }
+  }
+}
+
+main { 
+  width: 950px; 
+  margin: auto; 
+  #left  { 
+    width: 475px;
+    float: left; 
+  }
+  #right { 
+    width: 475px;
+    float: right; 
+    text-align: left;
+    margin-top: 20px; 
   }
 }

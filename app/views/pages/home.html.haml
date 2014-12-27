@@ -2,19 +2,21 @@
 
 = render "shared/flash_messages"
 
-%h1#amount_owed
-  = "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
-  - if signed_in? && current_user.admin?
-    %span.edit-link== [#{link_to "edit", bills_path}]
+#left
+  %h1#amount_owed
+    = "We owe #{number_to_currency(Bill.sum(:owed), unit: "$")}."
+    - if signed_in? && current_user.admin?
+      %span.edit-link== [#{link_to "edit", bills_path}]
 
-- if Bill.last.late?
-  %h1#rent_is_late Rent is late.
+  - if Bill.last.late?
+    %h1#rent_is_late Rent is late.
 
-%ul#amounts_owed= render @people
+  %ul#amounts_owed= render @people
 
-%ul#messages= render @messages
+#right
+  %ul#messages= render @messages
 
-- if signed_in?
-  .message_form= render "messages/form"
+  - if signed_in?
+    .message_form= render "messages/form"
 
 - flash[:error] = flash[:notice] = nil
