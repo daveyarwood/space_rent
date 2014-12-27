@@ -1,6 +1,7 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: #CD0000;
 
 #messages {
   list-style-type: none;
@@ -10,7 +11,7 @@
   }
 
   .log {
-    color: red;
+    color: $red;
   }
 
   .name {
