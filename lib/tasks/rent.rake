@@ -13,13 +13,13 @@ namespace :rent do
   desc "Add late fee to the last bill and mark it late, divide the late fee
         among those who haven't paid, and send out late notice emails."
   task late: :environment do
-    late_fee = ENV["LATE_FEE"].to_f
-    bill = Bill.last
-    bill.update(owed: bill.owed + late_fee, late: true)
-
-    slackers = Person.where("owes > 0")
-    Bill.split_amount(late_fee, slackers)
     if Bill.sum(:owed) > 0
+      late_fee = ENV["LATE_FEE"].to_f
+      bill = Bill.last
+      bill.update(owed: bill.owed + late_fee, late: true)
+
+      slackers = Person.where("owes > 0")
+      Bill.split_amount(late_fee, slackers)
       slackers.where(email_me: true).find_each do |person| 
         UserMailer.rent_is_late(person).deliver
       end
