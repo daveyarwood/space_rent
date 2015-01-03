@@ -22,20 +22,33 @@ class Bill < ActiveRecord::Base
   end
 
   def Bill.monthly_bill
-    Bill.create(owed: ENV["RENT_AMOUNT"].to_i)
+    rent_amount = ENV["RENT_AMOUNT"].to_f
+    Bill.create(owed: rent_amount)
+    Bill.split_rent(rent_amount)
+    Person.find_each {|person| UserMailer.rent_is_due(person).deliver}
   end
 
   def Bill.late_fee
+    late_fee = ENV["LATE_FEE"].to_f
     bill = Bill.last
-    bill.update(owed: bill.owed + ENV["LATE_FEE"], late: true)
+    bill.update(owed: bill.owed + late_fee, late: true)
+    # split the late fee between everyone who hasn't paid yet
+    slackers = Person.where("owes > 0")
+    late_fee_share = late_fee.to_f / slackers.count
+    slackers.find_each {|person| person.update(owes: person.owes + late_fee_share)}
   end
 
   def Bill.late_notice
     if Bill.sum(:owed) > 0
-      Person.find_each(conditions: "owes > 0") do |person| 
+      Person.where("owes > 0").find_each do |person| 
         UserMailer.rent_is_late(person).deliver
       end
     end
+  end
+
+  def Bill.rent_is_late
+    Bill.late_fee
+    Bill.late_notice
   end
 
 end

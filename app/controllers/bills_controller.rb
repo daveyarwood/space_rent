@@ -20,10 +20,7 @@ class BillsController < ApplicationController
 
   def create
     @bill = Bill.new(bill_params)
-    if @bill.save
-      Bill.split_rent(@bill.owed)
-      Person.find_each {|person| UserMailer.rent_is_due(person).deliver }
-    else
+    unless @bill.save
       DevMailer.bill_creation_error(@bill).deliver
     end
   end
