@@ -12,6 +12,6 @@ A little Rails app to help me and the people I share a practice space with keep 
 
 ## License
 
-Copyright © 2014 Dave Yarwood
+Copyright © 2014-2015 Dave Yarwood
 
 Distributed under the Eclipse Public License version 1.0
