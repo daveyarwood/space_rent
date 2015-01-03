@@ -8,7 +8,7 @@
     - if signed_in? && current_user.admin?
       %span.edit-link== [#{link_to "edit", bills_path}]
 
-  - if Bill.last.late?
+  - if Bill.any? && Bill.last.late?
     %h1#rent_is_late Rent is late.
 
   %ul#amounts_owed= render @people
