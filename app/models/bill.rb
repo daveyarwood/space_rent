@@ -25,7 +25,9 @@ class Bill < ActiveRecord::Base
     rent_amount = ENV["RENT_AMOUNT"].to_f
     Bill.create(owed: rent_amount)
     Bill.split_rent(rent_amount)
-    Person.find_each {|person| UserMailer.rent_is_due(person).deliver}
+    Person.where(email_me: true).find_each do |person| 
+      UserMailer.rent_is_due(person).deliver
+    end
   end
 
   def Bill.late_fee
@@ -40,7 +42,7 @@ class Bill < ActiveRecord::Base
 
   def Bill.late_notice
     if Bill.sum(:owed) > 0
-      Person.where("owes > 0").find_each do |person| 
+      Person.where("owes > 0 AND email_me = true").find_each do |person| 
         UserMailer.rent_is_late(person).deliver
       end
     end
