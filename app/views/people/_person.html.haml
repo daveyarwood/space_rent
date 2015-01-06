@@ -7,7 +7,7 @@
   - if person.payments.any?
     - amount = number_to_currency(person.payments.sum(:amount), unit: "$")
     %span.status.pending_payment= "pending payment: #{amount}"
-  - elsif person.owes <= 0
+  - elsif person.owes < 0.01
     %span.status.paid= "paid"
   - else
     = render "payments/form" if signed_in? && current_user == person
