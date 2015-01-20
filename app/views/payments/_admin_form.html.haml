@@ -1,6 +1,6 @@
 = form_for @payment do |f|
   = f.collection_select :person_id, Person.all, :id, :name
   has paid $
-  = f.number_field :amount
+  = f.number_field :amount, step: :any
   = "."
   = f.submit "Submit"
