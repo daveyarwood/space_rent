@@ -4,7 +4,7 @@
   = form_for bill do |f|
     = render "shared/error_messages", object: f.object
     = f.label          :owed, "Amount due:"
-    = f.number_field   :owed
+    = f.number_field   :owed, step: :any
     %br/
     = f.label          :late, "Late?"
     = f.check_box       :late
