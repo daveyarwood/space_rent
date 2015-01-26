@@ -14,7 +14,7 @@
     - if signed_in? && current_user.admin?
       %br/
       = f.label          :owes, "Currently owes:"
-      = f.number_field   :owes
+      = f.number_field   :owes, step: :any
       %br/
       = f.label          :admin, "Admin?"
       = f.check_box      :admin
