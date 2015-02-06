@@ -18,7 +18,7 @@ namespace :rent do
       bill = Bill.last
       bill.update(owed: bill.owed + late_fee, late: true)
 
-      slackers = Person.where("owes > 0")
+      slackers = Person.where("owes >= 0.01")
       Bill.split_amount(late_fee, slackers)
       slackers.where(email_me: true).find_each do |person| 
         UserMailer.rent_is_late(person).deliver
