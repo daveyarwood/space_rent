@@ -1,0 +1,5 @@
+This is an automated message from spacerent.
+
+<%= @person.name %> made a payment of <%= number_to_currency @amount, unit: '$' %>.
+
+Go to the spacerent admin page at <%= admin_url %> to confirm that <%= @person.name %> paid rent.

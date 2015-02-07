@@ -3,16 +3,16 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
-    #@payment = current_user.payments.build(payment_params)
     if @payment.save
+      DevMailer.payment_received(@payment.person, @payment.amount).deliver
       redirect_to root_path
     elsif @payment.errors.full_messages.any? {|m| m =~ /Amount must be less/}
-      what_we_owe = number_to_currency(Bill.sum(:owed), unit: "$")
+      what_we_owe = ActionController::Base.helpers.number_to_currency(Bill.sum(:owed), unit: "$")
       redirect_to root_path, 
         flash: {error: "You can't pay more than what we owe, #{what_we_owe}."}
     else
       redirect_to root_path, flash: {error: "ERROR"} 
-    end      
+    end
   end
   
   def accept

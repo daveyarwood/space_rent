@@ -8,6 +8,8 @@ class Person < ActiveRecord::Base
   validates_format_of :email, with: /.+@.+/
   
   before_create :create_remember_token
+
+  scope :admins, -> { where admin: true }
   
   def Person.ci_search!(name)
     # Does a case-insensitive search for a person named `name`. Returns the

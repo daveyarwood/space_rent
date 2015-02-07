@@ -1,0 +1,6 @@
+%p
+  %em This is an automated message from spacerent.
+
+%p= "#{@person.name} made a payment of #{number_to_currency @amount, unit: '$'}."
+
+%p== Click #{link_to "here", admin_url} to confirm that #{@person.name} has paid rent.
