@@ -1,0 +1,22 @@
+$(document).on 'page:change', ->
+
+  isValidAmount = (amount) -> /\$?[,0-9]+(\.[0-9]+)?/.test(amount)
+  sanitizeAmount = (amount) -> amount.replace(/[^\d\.]/g, '')
+
+  $('#new_payment input[type=submit]').click (e) ->
+    if $(e.currentTarget).data('isConfirming') == true
+      return # make payment
+    else
+      e.preventDefault()
+
+      amount = prompt 'Enter the amount you paid:', totalAmountOwed
+      return if (not amount?) || (amount.length == 0)
+
+      if isValidAmount(amount)
+        sanitizedAmount = sanitizeAmount(amount)
+        $('#payment_amount').val(sanitizedAmount);
+        $(e.currentTarget).data('isConfirming', true)
+        e.currentTarget.click()
+        $(e.currentTarget).data('isConfirming', false)
+      else
+        alert "That's not a valid amount."
