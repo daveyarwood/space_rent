@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @people = Person.all
-    @messages = Message.order(created_at: :desc).limit(20).reverse
+    @messages = Message.order(created_at: :desc).limit(100).reverse
     if signed_in?
       @message = Message.new(person: current_user)
       @payment = current_user.payments.build(amount: current_user.owes)
