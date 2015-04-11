@@ -1,3 +1,6 @@
+require 'bigdecimal'
+require_relative '../../lib/round_down'
+
 class Bill < ActiveRecord::Base
   validates_presence_of :owed
   
@@ -17,8 +20,13 @@ class Bill < ActiveRecord::Base
   end
 
   def Bill.split_amount(amount, people)
-    share = amount.to_f / people.count
-    people.find_each {|person| person.update(owes: person.owes + share)}
+    rounded_share = BigDecimal.new((amount.to_f / people.count).round_down(2).to_s)
+    shares = [rounded_share] * people.count
+    extra_cents_owed = ((BigDecimal.new(amount.to_s) - shares.inject(&:+)) * 100).to_i
+    extra_cents_owed.times do
+      shares[rand(shares.count)] += 0.01
+    end
+    people.find_each {|person| person.update(owes: person.owes + shares.pop)}
   end
 
 end

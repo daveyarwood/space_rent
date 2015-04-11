@@ -18,5 +18,7 @@
 # Ignore secrets.yml
 # /config/secrets.yml
 
-# Ignore .DS_Store files
+# misc other things to ignore
 .DS_Store
+*~
+.ruby-version
