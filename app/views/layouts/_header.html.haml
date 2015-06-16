@@ -6,7 +6,7 @@
       %li#username= current_user.name
       %li= link_to "settings", edit_person_path(current_user)
       - if current_user.admin?
-        %li= link_to "admin panel", admin_path
+        = render "layouts/admin_panel_link"
       %li= link_to "logout", logout_path, method: :delete
   - else
     = render "sessions/login"

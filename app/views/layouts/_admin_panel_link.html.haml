@@ -1,0 +1,2 @@
+%li
+  = link_to "admin panel#{(" (" << Payment.count.to_s << ")") if Payment.count > 0}", admin_path, :class => ("attention" if Payment.count > 0)
