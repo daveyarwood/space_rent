@@ -17,8 +17,9 @@ class PeopleController < ApplicationController
   
   def create
     @person = Person.new(current_user.admin? ? person_params_admin : person_params)
+    @person.password = @password = /\w+/.gen
     if @person.save
-      UserMailer.welcome(@person).deliver
+      UserMailer.welcome(@person, @password).deliver
       flash[:notice] = "Successfully created a new person."
       redirect_to new_person_path
     else

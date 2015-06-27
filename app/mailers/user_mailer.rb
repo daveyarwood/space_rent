@@ -1,8 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: "dave.yarwood@gmail.com"
 
-  def welcome(person)
+  def welcome(person, password)
     @person = person
+    @password = password
     mail to: @person.email, subject: "Welcome to spacerent"
   end
 

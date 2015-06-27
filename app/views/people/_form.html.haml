@@ -18,12 +18,15 @@
       %br/
       = f.label          :admin, "Admin?"
       = f.check_box      :admin
-    %br/
-    = f.label          :password, "Password:"
-    = f.password_field :password
-    %br/
-    = f.label          :password_confirmation, "Confirm Password:"
-    = f.password_field :password_confirmation
+    - if person.new_record?
+      = f.hidden_field :password
+    - else
+      %br/
+      = f.label          :password, "Password:"
+      = f.password_field :password
+      %br/
+      = f.label          :password_confirmation, "Confirm Password:"
+      = f.password_field :password_confirmation
     %br/
     = f.submit button_text
 
