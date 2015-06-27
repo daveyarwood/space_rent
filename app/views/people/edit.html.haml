@@ -5,6 +5,6 @@
 = render partial: "form", locals: {person: @person, button_text: "Save changes"}
 
 - if current_user.admin? && current_user != @person
-  %div{style: "color:red"}
+  #delete_person
     = link_to "Delete #{@person.name}", @person, method: :delete,
               data: {confirm: "THIS CAN'T BE UNDONE. Are you sure???"}
